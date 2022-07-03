@@ -10,4 +10,6 @@
 $this->useSlot($embedded);
 
 ?></head>
-<body>
+<body><?php
+
+$this->buildNav();

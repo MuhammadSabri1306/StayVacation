@@ -1,12 +1,12 @@
 <?php
 
 $theme = $this->getTheme('DefaultTheme');
-$theme->title = 'StayVacation - Pemesanan';
+$theme->title = 'StayVacation - Checkout';
 $theme->header(function(){
 
-?><script src="<?=DEFAULT_VIEW_VENDOR_URL?>/vue/unpkg-vue3.js"></script><?php
+?><script src="<?=DEFAULT_VIEW_VENDOR_URL?>/vue/unpkg-vue3.prod.js"></script><?php
 
-})
+});
 
 ?><main class="bg-light min-h-screen">
 	<nav class="navbar pt-12">
@@ -42,7 +42,7 @@ $theme->header(function(){
 				<i class="fas fa-circle-notch fa-spin"></i>
 			</p>
 			<div class="mt-8 flex justify-end">
-				<button type="button" @click="reset" class="btn-hero border-gray-500 bg-gray-500 hover:bg-gray-400 focus:bg-gray-400 text-white transition-color transition-200" data-redirectto="reservation.html">Batalkan</button>
+				<button type="button" @click="reset" class="btn-hero border-gray-500 bg-gray-500 hover:bg-gray-400 focus:bg-gray-400 text-white transition-color transition-200" data-redirectto="<?=BASEDOMAIN?>/reservation">Batalkan</button>
 			</div>
 		</section>
 		<form method="post" action="<?=BASEDOMAIN?>/reservation/save">

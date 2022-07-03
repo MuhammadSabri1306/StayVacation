@@ -4,9 +4,9 @@ $theme = $this->getTheme('DefaultTheme');
 $theme->title = 'StayVacation - Pemesanan';
 $theme->header(function(){
 
-?><script src="<?=DEFAULT_VIEW_VENDOR_URL?>/vue/unpkg-vue3.js"></script><?php
+?><script src="<?=DEFAULT_VIEW_VENDOR_URL?>/vue/unpkg-vue3.prod.js"></script><?php
 
-})
+});
 
 ?><main class="bg-light min-h-screen">
 	<nav class="navbar pt-12">

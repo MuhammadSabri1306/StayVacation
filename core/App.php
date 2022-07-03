@@ -16,14 +16,14 @@ class App
 		if(!empty($url)){
 			$this->controller = ucfirst($url[0]);
 
-			if(!file_exists(BASEPATH . '/core/controller/' . $this->controller . '.php')){
+			if(!file_exists(BASEPATH . '/app/controller/' . $this->controller . '.php')){
 				$e404 = true;
 			}
 
 			unset($url[0]);
 		}
 
-		require BASEPATH . '/core/controller/' . $this->controller . '.php';
+		require BASEPATH . '/app/controller/' . $this->controller . '.php';
 		$this->controller = new $this->controller;
 
 		if(!empty($url)){

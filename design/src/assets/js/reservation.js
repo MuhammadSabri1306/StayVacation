@@ -1,29 +1,23 @@
-const products = [
-	{
-		id: "0",
-		title: "Lion Air",
-		category: "Tiket Pesawat",
-		img: "upload/lion-air-2.jpg",
-		price: 500000,
-		desc: "Penerbangan pukul 16:30 - 18:00"
-	},
-	{
-		id: "1",
-		title: "Hotel Grand Rofina",
-		category: "Hotel",
-		img: "upload/hotels.jpg",
-		price: 346750,
-		desc: "Alamat Jl. Ahmad Yani No.10, Makassar, Sulawesi Selatan"
-	},
-	{
-		id: "2",
-		title: "Hotel CLARO",
-		category: "Hotel",
-		img: "upload/claro.jpg",
-		price: 346750,
-		desc: "Alamat Jl. AP. Pettarani No.12, Makassar, Sulawesi Selatan"
-	}
-];
+const fetchData = (url) => {
+
+	return new Promise(function(resolve, reject){
+		const xhttp = new XMLHttpRequest();
+
+		xhttp.onload = function(){
+			if(xhttp.status >= 200 && xhttp.status < 300)
+				resolve(xhttp.responseText);
+			else reject(xhttp.statusText);
+		};
+
+		xhttp.onerror = function(){
+			reject(xhttp.statusText);
+		};
+
+		xhttp.open("GET", url);
+		xhttp.send();
+	});
+
+};
 
 const { createApp } = Vue;
 createApp({
@@ -34,9 +28,18 @@ createApp({
 		};
 	},
 	created(){
-		this.setupData(products);
-		this.session(this.products);
-		this.loaded = true;
+		const url = "http://localhost/limus/api/products";
+		fetchData(url).then(result => {
+			result = JSON.parse(result);
+			if(!result.status){
+				console.error("Failed to load api from " + url);
+				return;
+			}
+
+			this.setupData(result.data);
+			this.session(this.products);
+			this.loaded = true;
+		}).catch(err => console.error(err));
 	},
 	methods: {
 		session(val = null){
@@ -57,7 +60,7 @@ createApp({
 			this.products = products.map(item => {
 				item.count = item.count || 1;
 				item.reserved = Boolean(item.reserved);
-				item.img = `url('${ item.img }')`;
+				item.img = (item.img.search(/url\(/) < 0) ? `url('${ item.img }')` : item.img;
 				return item;
 			});
 		},

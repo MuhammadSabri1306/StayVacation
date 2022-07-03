@@ -5,7 +5,7 @@
  *
  */
 	'production_mode' => false,
-	'user_level' => ['unknown', 'customer', 'admin']
+	'user_level' => ['unknown', 'customer', 'admin'],
 
 /* -------------------------------------------------
  * URL AND PATH
@@ -24,6 +24,6 @@
 	'db_host' => 'localhost',
 	'db_user' => 'root',
 	'db_pass' => '',
-	'db_name' => 'limus'
+	'db_name' => 'stayvacation'
 
 );

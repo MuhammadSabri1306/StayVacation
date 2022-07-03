@@ -9,7 +9,7 @@ class Model
 	private $db = null;
 
 	function __construct($path, $params = []){
-		$path = "/core/app/$path.php";
+		$path = "/app/model/$path.php";
 		file_exists(BASEPATH . $path) or exit("Error to get Model's file on path: ". BASEDOMAIN . '/' . $path);
 
 		$this->path = BASEPATH . $path;

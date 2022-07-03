@@ -5,12 +5,15 @@
 class Controller
 {
 	protected function setVisibility(...$visibility){
-		$appUser = new User();
-
+		$appUser = new UserManager();
 		if(!in_array($appUser->getLevel(), $visibility)){
-			header('location:' . DEFAULT_KICK_PAGE);
-			exit('You dont have access to this page');
+			$this->kick();
 		}
+	}
+
+	protected function kick(){
+		header('location:' . DEFAULT_KICK_PAGE);
+		exit('You dont have access to this page');
 	}
 
 	protected function getComponent($component){
@@ -19,13 +22,6 @@ class Controller
 
 		include BASEPATH . $file;
 		return new $component;
-	}
-
-	protected function getService($service, $params = []){
-		$service = "/core/service/$service.php";
-		file_exists(BASEPATH . $service) or exit("Error to get Service's file on path: $service");
-
-		require BASEPATH . $service;
 	}
 
 	protected function use($library){

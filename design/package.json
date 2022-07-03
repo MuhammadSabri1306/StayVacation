@@ -1,0 +1,16 @@
+{
+  "name": "limus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tailwindcss -i ./src/index.css -o ./src/assets/css/style.css --watch",
+    "build": "npx tailwindcss -i ./src/index.css -o ./src/assets/css/style.min.css --minify"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.1.4"
+  }
+}

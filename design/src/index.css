@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+@layer base {
+	body {
+		@apply font-sans;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		@apply font-serif;
+	}
+
+	button:active {
+		@apply outline-none;
+	}
+
+	:disabled {
+		@apply cursor-not-allowed;
+	}
+
+	.table-custom th {
+		@apply bg-dark/10;
+	}
+
+	.table-custom td, .table-custom th {
+		@apply border border-dark/50 px-3 py-2 text-center;
+	}
+}
+
+@layer components {
+	.container.grid-16 {
+		@apply grid gap-16 max-w-[calc(100%/18*16-0.75rem)] sm:max-w-[calc(640px/18*16-0.75rem)] md:max-w-[calc(768px/18*16-0.75rem)] lg:max-w-[calc(1024px/18*16-0.75rem)] xl:max-w-[calc(1280px/18*16-+0.75rem)] 2xl:max-w-[calc(1536px/18*16-0.75rem)];
+	}
+
+	.transition-200 {
+		@apply duration-200 ease-in-out;
+	}
+
+	.navbar {
+		@apply py-2 bg-light;
+	}
+
+	.primary-link {
+		@apply font-semibold text-sm text-dark hover:text-sky-700 opacity-60 hover:opacity-100 transition-all duration-200 ease-in-out;
+	}
+
+	.primary-link.active {
+		@apply opacity-100 hover:text-dark;
+	}
+
+	.bg-img-full {
+		@apply bg-cover bg-no-repeat bg-center;
+	}
+
+	.bg-hero {
+		background-image: url('../img/nature1.jpg');
+		@apply grow h-full bg-img-full;
+	}
+
+	.btn-hero {
+		@apply py-3 px-11 font-semibold border-2 border-dark text-dark text-sm rounded-md;
+	}
+
+	#home {
+		background-image: url('../img/bg-home.jpg');
+	}
+
+	.bg-section1 {
+		background-image: url('../img/bg-dark-aesthetic.jpg');
+	}
+
+	.bg-section2 {
+		background-image: url('../img/bg-light-aesthetic.jpg');
+	}
+
+	input.form-input, textarea.form-input {
+		@apply px-4 py-3 block w-full border-2 border-dark hover:border-sky-700 focus:border-sky-700 text-dark text-sm rounded-md bg-transparent focus:bg-white focus:outline-none transition-colors transition-200;
+	}
+
+	.product-card .product-img {
+		@apply aspect-video bg-img-full;
+	}
+
+	.product-card .product-separation {
+		@apply h-1 w-16 bg-dark my-6;
+	}
+
+	.product-card .product-title {
+		@apply font-bold text-xl text-dark mb-3;
+	}
+
+	.product-card .product-category,
+	.product-card .product-price {
+		@apply text-dark text-sm;
+	}
+
+	.product-card .product-price {
+		@apply mb-3;
+	}
+
+	.product-card .product-desc {
+		@apply text-sm italic mb-6;
+	}
+
+	.product-card .product-count {
+		@apply grow text-center px-4 py-2 border-0 hover:border-2 focus:border-2 border-transparent hover:border-sky-700 focus:border-sky-700 text-dark text-sm rounded-md bg-white focus:outline-none transition-all transition-200;
+	}
+}
+
+@layer utilities {
+	.brand {
+		@apply font-black text-2xl underline underline-offset-4 font-display text-dark opacity-100;
+	}
+}
